@@ -1,17 +1,18 @@
 Nouns:
-Person
-Bike
-Docking Station
+* Person
+* Bike
+* Docking Station
 
 Verbs:
-Use
-Release
-Working
+* Use
+* Release
+* Working
 
-Object  Message
-Person  use
-Docking Station release
-Bike  working?
+| Object | Message |
+| ------ | ------- |
+| Person |         |
+| Docking Station | releases |
+| Bike | working? |
 
 (Person > Use > Bike)
 (Person > Gives command to release > Docking Station)
