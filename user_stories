@@ -8,4 +8,4 @@ User Story
 | Docking station | release_bike |
 | Good Bike       | Test_working |
 
-Person >>> FIND >>> Docking Station >>> Bike >>> RELEASE_BIKE >>> TEST_WORKING true / false >>> Good Bike 
+Person >>> FIND >>> Docking Station >>> Bike >>> RELEASE_BIKE >>> TEST_WORKING? true / false >>> Good Bike 
