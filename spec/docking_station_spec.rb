@@ -2,7 +2,12 @@ require 'docking_station'
 require 'bike'
 
 describe DockingStation do
-
+  describe '#initialize' do
+    it 'initializes the docking station with an empty array of bikes' do
+      expect(DockingStation.new.bikes).to eq([])
+    end
+  end
+  
   describe '#release_bike' do
     it { is_expected.to respond_to(:release_bike) }
     it 'releases a working bike if a bike is present' do
