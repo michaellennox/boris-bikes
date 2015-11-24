@@ -9,7 +9,7 @@ class DockingStation
   end
 
   def release_bike
-    raise "No bike available!" unless @bikes.size == 1
+    raise "No bike available!" if @bikes.size == 0
     @bikes.pop
   end
 
