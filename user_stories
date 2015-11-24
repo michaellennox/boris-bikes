@@ -1,0 +1,11 @@
+
+User Story
+
+| OBJECTS         | MESSAGES     |
+|-----------------|--------------|
+| Person          | find         |
+| Bike            | use          |
+| Docking station | release_bike |
+| Good Bike       | Test_working |
+
+Person >>> FIND >>> Docking Station >>> Bike >>> RELEASE_BIKE >>> TEST_WORKING true / false >>> Good Bike 
