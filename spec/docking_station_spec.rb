@@ -2,17 +2,26 @@ require 'docking_station'
 
 describe DockingStation do
   it { is_expected.to respond_to :release_bike }
-
   it { is_expected.to respond_to(:dock).with(1).argument }
-  it 'docks something' do
-    bike = Bike.new
-    expect(subject.dock(bike)).to eq bike
+  it { is_expected.to respond_to(:bikes) }
+
+  describe '#bikes' do
+    it 'should return an array with the bikes in the docking station' do
+      array = []
+      2.times { bike = Bike.new; array << bike; subject.dock(bike) }
+      expect(subject.bikes).to match_array(array)
+    end
   end
-  it { is_expected.to respond_to(:bike) }
-  it 'should return the bike in the docking station' do
-    bike = Bike.new
-    subject.dock(bike)
-    expect(subject.bike).to eq bike
+
+  describe '#dock' do
+    it 'docks something' do
+      bike = Bike.new
+      expect(subject.dock(bike)).to eq subject.bikes
+    end
+    it 'raises an error when there is more than 20 bikes in the docking station' do
+      20.times { subject.dock(Bike.new) }
+      expect { subject.dock(Bike.new) }.to raise_error 'Docking station is full'
+    end
   end
 
   describe '#release_bike' do
