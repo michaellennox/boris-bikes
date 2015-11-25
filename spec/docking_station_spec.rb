@@ -50,6 +50,11 @@ describe DockingStation do
       bike = subject.release_bike
       expect(bike).to be_working
     end
+    it 'deletes the bike released from the array' do
+      3.times { subject.dock(Bike.new) }
+      bike = subject.release_bike
+      expect(subject.bikes.include?(bike)).to be false
+    end
     it 'raises an error when there are only broken bikes available' do
       station = DockingStation.new
       station.dock_and_report(Bike.new)
