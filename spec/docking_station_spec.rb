@@ -18,4 +18,7 @@ describe DockingStation do
     station.dock(bike)
     expect(station.bike_available).to eq(bike)
   end
+
+  #testing
+  
 end
