@@ -30,7 +30,7 @@ class DockingStation
   end
 
   def dock_and_report(bike)
-
+    dock(bike)
   end
 
   private :full?, :empty?
