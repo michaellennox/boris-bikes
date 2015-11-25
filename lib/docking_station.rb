@@ -20,13 +20,13 @@ class DockingStation
   end
 
   def broken_only?
-    bikes.find{ |bike| bike.working == true } == nil
+    !bikes.find{ |bike| bike.working }
   end
 
   def release_bike
     fail 'No bikes available' if empty?
     fail 'No working bikes are available' if broken_only?
-    bikes.pop
+    bikes.find{ |bike| bike.working }
   end
 
   def dock(bike)
