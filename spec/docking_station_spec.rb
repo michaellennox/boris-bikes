@@ -2,6 +2,10 @@ require 'docking_station'
 
 describe DockingStation do
 
+  describe '#capacity' do
+    it { is_expected.to respond_to :capacity }
+  end
+
   describe '#initialize' do
     it 'Should accept a capacity argument' do
       station = DockingStation.new 50
