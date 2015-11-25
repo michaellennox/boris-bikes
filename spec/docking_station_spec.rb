@@ -21,7 +21,7 @@ describe DockingStation do
     it { is_expected.to respond_to(:bikes) }
     it 'should return an array with the bikes in the docking station' do
       array = []
-      2.times { bike = Bike.new; array << bike; subject.dock(bike) }
+      2.times { bike = double(:bike); array << bike; subject.dock(bike) }
       expect(subject.bikes).to match_array(array)
     end
   end
@@ -29,13 +29,13 @@ describe DockingStation do
   describe '#dock' do
     it { is_expected.to respond_to(:dock).with(1).argument }
     it 'docks something' do
-      bike = Bike.new
+      bike = double(:bike)
       expect(subject.dock(bike)).to eq subject.bikes
     end
     it 'raises an error when trying to add more bikes than capacity' do
       station = DockingStation.new(40)
-      station.capacity.times { station.dock(Bike.new) }
-      expect { station.dock(Bike.new) }.to raise_error 'Docking station is full'
+      station.capacity.times { station.dock(double(:bike)) }
+      expect { station.dock(double(:bike)) }.to raise_error 'Docking station is full'
     end
   end
 
@@ -45,19 +45,19 @@ describe DockingStation do
       expect { subject.release_bike }.to raise_error 'No bikes available'
     end
     it 'releases working bikes if any are in array' do
-      subject.dock(Bike.new)
-      subject.dock_and_report(Bike.new)
+      subject.dock(double(:bike))
+      subject.dock_and_report(double(:bike))
       bike = subject.release_bike
       expect(bike).to be_working
     end
     it 'deletes the bike released from the array' do
-      3.times { subject.dock(Bike.new) }
+      3.times { subject.dock(double(:bike)) }
       bike = subject.release_bike
       expect(subject.bikes.include?(bike)).to be false
     end
     it 'raises an error when there are only broken bikes available' do
       station = DockingStation.new
-      station.dock_and_report(Bike.new)
+      station.dock_and_report(double(:bike))
       expect { station.release_bike }.to raise_error 'No working bikes are available'
     end
   end
@@ -65,7 +65,7 @@ describe DockingStation do
   describe '#dock_and_report' do
     it { is_expected.to respond_to(:dock_and_report).with(1).argument }
     it 'changes the status of the bike object working method to false' do
-      bike = Bike.new
+      bike = double(:bike)
       DockingStation.new.dock_and_report(bike)
       expect(bike.working).to be false
     end
