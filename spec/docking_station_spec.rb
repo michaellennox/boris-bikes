@@ -52,4 +52,8 @@ describe DockingStation do
     end
   end
 
+  describe '#dock_and_report' do
+    it { is_expected.to respond_to(:dock_and_report).with(1).argument }
+  end
+
 end

@@ -29,5 +29,9 @@ class DockingStation
     bikes << bike
   end
 
+  def dock_and_report(bike)
+
+  end
+
   private :full?, :empty?
 end
