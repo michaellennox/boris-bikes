@@ -19,8 +19,13 @@ class DockingStation
     bikes.empty?
   end
 
+  def broken_only?
+    bikes.find{ |bike| bike.working == true } == nil
+  end
+
   def release_bike
     fail 'No bikes available' if empty?
+    fail 'No working bikes are available' if broken_only?
     bikes.pop
   end
 
@@ -34,5 +39,5 @@ class DockingStation
     dock(bike)
   end
 
-  private :full?, :empty?
+  private :full?, :empty?, :broken_only?
 end
