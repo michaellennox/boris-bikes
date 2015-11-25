@@ -9,21 +9,21 @@ class DockingStation
   end
 
   def full?
-    @bikes.size >= @capacity
+    bikes.size >= capacity
   end
 
   def empty?
-    @bikes.empty?
+    bikes.empty?
   end
 
   def release_bike
     fail 'No bikes available' if empty?
-    @bikes.pop
+    bikes.pop
   end
 
   def dock(bike)
     fail 'Docking station is full' if full?
-    @bikes << bike
+    bikes << bike
   end
 
   private :full?, :empty?
