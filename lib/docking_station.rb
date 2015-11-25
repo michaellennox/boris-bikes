@@ -9,11 +9,11 @@ class DockingStation
   end
 
   def full?
-    @bikes.size >= @capacity ? true : false
+    @bikes.size >= @capacity
   end
 
   def empty?
-    @bikes.empty? ? true : false
+    @bikes.empty?
   end
 
   def release_bike
