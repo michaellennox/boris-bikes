@@ -31,6 +31,7 @@ class DockingStation
 
   def dock_and_report(bike)
     dock(bike)
+    bike.working = false
   end
 
   private :full?, :empty?
