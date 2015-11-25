@@ -6,6 +6,7 @@ class DockingStation
 
   def initialize(argument = 20)
     @bikes = []
+    @capacity = 20
   end
 
   def full?
