@@ -50,6 +50,12 @@ describe DockingStation do
       bike = subject.release_bike
       expect(bike).to be_working
     end
+    it 'will not release a broken bike' do
+      bike = Bike.new
+      station = DockingStation.new
+      station.dock_and_report(bike)
+      expect(station.release_bike).to raise_error 'That bike is broken and can\'t be released'
+    end
   end
 
   describe '#dock_and_report' do
