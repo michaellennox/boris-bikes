@@ -2,6 +2,12 @@ require 'docking_station'
 
 describe DockingStation do
 
+  describe '#initialize' do
+    it 'Should accept a capacity argument' do
+      station = DockingStation.new 50
+    end
+  end
+
   describe '#bikes' do
     it { is_expected.to respond_to(:bikes) }
     it 'should return an array with the bikes in the docking station' do
