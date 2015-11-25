@@ -7,9 +7,9 @@ describe DockingStation do
   end
 
   describe '#initialize' do
-    it 'Should give capacity a default value of 20' do
+    it 'Should give capacity a default value of DockingStation::DEFAULT_CAPACITY' do
       station = DockingStation.new
-      expect(station.capacity).to eq(20)
+      expect(station.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
     end
     it 'Should accept an argument and give capacity the value passed as an argument' do
       station = DockingStation.new 50
