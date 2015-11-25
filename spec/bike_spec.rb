@@ -16,6 +16,10 @@ describe Bike do
 
   describe '#working' do
     it { is_expected.to respond_to(:working) }
+    it 'should be editable' do
+      subject.working = false
+      expect(subject.working).to be false
+    end
   end
 
 end
