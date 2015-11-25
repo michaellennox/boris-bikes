@@ -54,6 +54,11 @@ describe DockingStation do
 
   describe '#dock_and_report' do
     it { is_expected.to respond_to(:dock_and_report).with(1).argument }
+    it 'changes the status of the bike object working method to false' do
+      bike = Bike.new
+      DockingStation.new.dock_and_report(bike)
+      expect(bike.working).to be false
+    end
   end
 
 end
