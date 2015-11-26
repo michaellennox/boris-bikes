@@ -38,4 +38,8 @@ describe DockingStation do
     expect(station.capacity).to eq DockingStation::DEFAULT_CAPACITY
   end
 
+  it "returning broken bike" do
+    bike = Bike.new
+    bike.working? == false
+  end
 end
