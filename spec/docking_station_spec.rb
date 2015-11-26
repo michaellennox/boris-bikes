@@ -7,9 +7,10 @@ describe DockingStation do
       expect(subject.bikes).to eq([])
     end
 
-#    it 'sets capacity to argument passed' do
-
-#    end
+    it 'sets capacity to argument passed' do
+      station = DockingStation.new(30)
+      expect(station.capacity).to eq(30)
+    end
 
 
   end
