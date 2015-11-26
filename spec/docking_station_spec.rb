@@ -18,12 +18,12 @@ describe DockingStation do
   describe '#dock' do
 
     it 'raises an error if full' do
-      subject.capacity.times {subject.dock(Bike.new)}
-      expect{subject.dock(Bike.new)}.to raise_error('Docking station full')
+      subject.capacity.times {subject.dock(double(:bike))}
+      expect{subject.dock(double(:bike))}.to raise_error('Docking station full')
     end
 
     it 'docks something' do
-      bike = Bike.new
+      bike = double(:bike)
       expect(subject.dock(bike)).to eq [bike]
     end
 
@@ -36,15 +36,15 @@ describe DockingStation do
     end
 
     it  'should raise an error if there are only broken bikes' do
-      bike = Bike.new
+      bike = double(:bike)
       bike.report_broken
       subject.dock(bike)
       expect{subject.release_bike}.to raise_error('No working bikes available')
     end
 
     it 'should release a working bike' do
-      subject.dock(Bike.new)
-      broken = Bike.new
+      subject.dock(double(:bike))
+      broken = double(:bike)
       broken.report_broken
       subject.dock(broken)
       bike = subject.release_bike
@@ -52,7 +52,7 @@ describe DockingStation do
     end
 
     it 'should remove released bike from the array' do
-      subject.dock(Bike.new)
+      subject.dock(double(:bike))
       subject.release_bike
       expect{subject.release_bike}.to raise_error('No bikes available')
     end
