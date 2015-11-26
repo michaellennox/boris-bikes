@@ -31,20 +31,30 @@ describe DockingStation do
 
   describe '#release_bike' do
 
-    it  'raises an error if there are no bikes' do
+    it 'raises an error if there are no bikes' do
       expect{subject.release_bike}.to raise_error('No bikes available')
     end
 
     it  'should raise an error if there are only broken bikes' do
-      bike = Bike.new.report_broken
+      bike = Bike.new
+      bike.report_broken
       subject.dock(bike)
       expect{subject.release_bike}.to raise_error('No working bikes available')
     end
 
     it 'should release a working bike' do
       subject.dock(Bike.new)
+      broken = Bike.new
+      broken.report_broken
+      subject.dock(broken)
       bike = subject.release_bike
       expect(bike).to be_working
+    end
+
+    it 'should remove released bike from the array' do
+      subject.dock(Bike.new)
+      subject.release_bike
+      expect{subject.release_bike}.to raise_error('No bikes available')
     end
 
   end
