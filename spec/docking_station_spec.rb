@@ -3,9 +3,6 @@ require 'docking_station'
 describe DockingStation do
 
   describe '#initialize' do
-    it 'should initialize with bikes set to an empty array' do
-      expect(subject.bikes).to eq([])
-    end
 
     it 'sets capacity to argument passed' do
       station = DockingStation.new(30)
@@ -13,7 +10,7 @@ describe DockingStation do
     end
 
     it 'if no argument passed, set\'s capacity to 20' do
-      expect(subject.capacity).to eq(20)
+      expect(subject.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
     end
 
   end
@@ -24,8 +21,8 @@ describe DockingStation do
 
   describe '#dock' do
 
-    it 'raises an error if 20 bikes are already docked' do
-      DockingStation::DEFAULT_CAPACITY.times {subject.dock(Bike.new)}
+    it 'raises an error if full' do
+      subject.capacity.times {subject.dock(Bike.new)}
       expect{subject.dock(Bike.new)}.to raise_error('Docking station full')
     end
 
@@ -35,12 +32,6 @@ describe DockingStation do
       bike = Bike.new
       expect(subject.dock(bike)).to eq [bike]
     end
-
-  end
-
-  describe '#bikes' do
-
-    it { is_expected.to respond_to(:bikes) }
 
   end
 
