@@ -36,23 +36,21 @@ describe DockingStation do
     end
 
     it  'should raise an error if there are only broken bikes' do
-      bike = double(:bike)
-      bike.report_broken
+      bike = double(:bike, working?: false)
       subject.dock(bike)
       expect{subject.release_bike}.to raise_error('No working bikes available')
     end
 
     it 'should release a working bike' do
-      subject.dock(double(:bike))
-      broken = double(:bike)
-      broken.report_broken
+      subject.dock(double(:bike, working?: true))
+      broken = double(:bike, working?: false)
       subject.dock(broken)
       bike = subject.release_bike
       expect(bike).to be_working
     end
 
     it 'should remove released bike from the array' do
-      subject.dock(double(:bike))
+      subject.dock double(:bike, working?: true)
       subject.release_bike
       expect{subject.release_bike}.to raise_error('No bikes available')
     end
