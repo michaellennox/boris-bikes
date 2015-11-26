@@ -12,6 +12,7 @@ class DockingStation
 
   def release_bike
     fail "No more bikes available" if empty?
+    fail "The bike is broken" if @bikes.last.working? == false
     @bikes.pop
   end
 
@@ -23,7 +24,7 @@ class DockingStation
 private
 
   def full?
-    @bikes.count >= @capacity #DEFAULT_CAPACITY
+    @bikes.count >= DEFAULT_CAPACITY
   end
 
   def empty?
