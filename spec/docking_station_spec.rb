@@ -2,6 +2,12 @@ require 'docking_station'
 
 describe DockingStation do
 
+  describe '#initialize' do
+    it 'should initialize with bikes set to an empty array' do
+      expect(subject.bikes).to eq([])
+    end
+  end
+
   describe '#dock' do
 
     it 'raises an error if bike is already docked' do
@@ -18,9 +24,9 @@ describe DockingStation do
 
   end
 
-  describe '#bike' do
+  describe '#bikes' do
 
-    it { is_expected.to respond_to(:bike) }
+    it { is_expected.to respond_to(:bikes) }
 
   end
 
