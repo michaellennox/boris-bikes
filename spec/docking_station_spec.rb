@@ -12,6 +12,9 @@ describe DockingStation do
       expect(station.capacity).to eq(30)
     end
 
+    it 'if no argument passed, set\'s capacity to 20' do
+      expect(subject.capacity).to eq(20)
+    end
 
   end
 
