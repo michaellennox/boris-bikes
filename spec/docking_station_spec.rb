@@ -11,8 +11,6 @@ describe DockingStation do
     expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
   end
 
-  it {is_expected.to respond_to :bikes}
-
   describe '#release_bike' do
 
     it 'should release a working bike if any present' do
@@ -24,9 +22,18 @@ describe DockingStation do
       expect(bike.broken?).to be_falsey
     end
 
-    it "should release the same bike" do
+    it 'should check the bike has been released' do
+      subject.dock(Bike.new)
+      subject.release_bike
+      expect{subject.release_bike}.to raise_error "No more bikes available"
+    end
+
+    it "should release the same bike as removed" do
       bike = Bike.new
       subject.dock(bike)
+      brokenbike = Bike.new
+      brokenbike.report_broken
+      subject.dock(brokenbike)
       expect(subject.release_bike).to eq(bike)
     end
 
