@@ -16,6 +16,14 @@ describe DockingStation do
 
   it { is_expected.to respond_to(:release_broken_to).with(1).argument }
 
+  it 'should return all the broken bikes' do
+    subject.dock(bike)
+    broken1, broken2 = brokenbike, brokenbike
+    subject.dock(broken1)
+    subject.dock(broken2)
+    expect(subject.release_broken_to(double(:van))).to eq([broken1,broken2])
+  end
+
   describe '#release_bike' do
 
     it 'should release a working bike if any present' do

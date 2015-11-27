@@ -21,6 +21,10 @@ class DockingStation
     bikes << bike
   end
 
+  def release_broken_to(van)
+
+  end
+
 private
 
   attr_reader :bikes
