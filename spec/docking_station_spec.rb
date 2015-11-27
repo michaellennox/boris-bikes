@@ -2,6 +2,17 @@ require 'docking_station'
 
 describe DockingStation do
 
+  it "should change capacity when given an argument" do
+    station = DockingStation.new(10)
+    expect(station.capacity).to eq 10
+  end
+
+  it "should equal the default capacity when no argument is given" do
+    expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+  end
+
+  it {is_expected.to respond_to :bikes}
+
   describe '#release_bike' do
 
     it 'should release a working bike' do
@@ -22,35 +33,19 @@ describe DockingStation do
       expect{subject.release_bike}.to raise_error "The bike is broken"
     end
 
-    it "should raise an error when there are no bikes available" do
+    it "should raise an error when trying to remove a bike from an empty station" do
       expect{subject.release_bike}.to raise_error "No more bikes available"
     end
 
   end
 
-  it { is_expected.to respond_to :release_bike }
+  describe '#dock' do
 
-  it {is_expected.to respond_to :bikes}
+    it "should raise an error when trying to dock more bikes than the capacity" do
+      subject.capacity.times{subject.dock(Bike.new)}
+      expect { subject.dock(Bike.new) }.to raise_error "Docking Station is full"
+    end
 
-  it { is_expected.to respond_to(:dock).with(1).argument }
-
-  it "Docking Station is full" do
-    subject.capacity.times{subject.dock(Bike.new)}
-    expect { subject.dock(Bike.new) }.to raise_error "Docking Station is full"
   end
 
-  it "Changes capacity when given an argument" do
-    station = DockingStation.new(10)
-    expect(station.capacity).to eq 10
-  end
-
-  it "No capacity given" do
-    station = DockingStation.new
-    expect(station.capacity).to eq DockingStation::DEFAULT_CAPACITY
-  end
-
-  it "returning broken bike" do
-    bike = Bike.new
-    bike.working? == false
-  end
 end
