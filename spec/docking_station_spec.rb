@@ -14,6 +14,8 @@ describe DockingStation do
     expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
   end
 
+  it { is_expected.to respond_to(:release_broken_to).with(1).argument }
+
   describe '#release_bike' do
 
     it 'should release a working bike if any present' do
