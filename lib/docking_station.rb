@@ -12,8 +12,8 @@ class DockingStation
 
   def release_bike
     fail "No more bikes available" if empty?
-    fail "The bike is broken" if @bikes.last.broken? == true
-    @bikes.pop
+    fail "All bikes are broken" if all_broken?
+    @bikes.each {|x| return x unless x.broken?}
   end
 
   def dock(bike)
@@ -31,4 +31,7 @@ private
     @bikes.empty?
   end
 
+  def all_broken?
+    bikes.all?{|x|x.broken?}
+  end
 end
