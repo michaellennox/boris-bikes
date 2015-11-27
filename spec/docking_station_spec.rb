@@ -14,14 +14,21 @@ describe DockingStation do
     expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
   end
 
-  it { is_expected.to respond_to(:release_broken_to).with(1).argument }
+  describe '#release_broken_to' do
 
-  it 'should return all the broken bikes' do
-    subject.dock(bike)
-    broken1, broken2 = brokenbike, brokenbike
-    subject.dock(broken1)
-    subject.dock(broken2)
-    expect(subject.release_broken_to(double(:van))).to eq([broken1,broken2])
+    it 'should return all the broken bikes' do
+      subject.dock(bike)
+      broken1, broken2 = brokenbike, brokenbike
+      subject.dock(broken1)
+      subject.dock(broken2)
+      expect(subject.release_broken_to(double(:van))).to eq([broken1,broken2])
+    end
+
+    it 'should remove all broken bikes from array' do
+      2.times { subject.dock(brokenbike) }
+      subject.release_broken_to(double :van)
+      expect(subject.release_bike).to raise_error "No more bikes available"
+    end
   end
 
   describe '#release_bike' do

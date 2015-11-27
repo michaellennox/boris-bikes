@@ -22,7 +22,7 @@ class DockingStation
   end
 
   def release_broken_to(van)
-
+    find_all_broken
   end
 
 private
@@ -42,6 +42,10 @@ private
   end
 
   def find_working_bike
-    bikes.find { |bike| !bike.broken?}
+    bikes.find { |bike| !bike.broken? }
+  end
+
+  def find_all_broken
+    bikes.find_all { |bike| bike.broken? }
   end
 end
