@@ -15,9 +15,13 @@ describe DockingStation do
 
   describe '#release_bike' do
 
-    it 'should release a working bike' do
+    it 'should release a working bike if any present' do
       subject.dock(Bike.new)
-      expect(subject.release_bike).to be_working
+      brokenbike = Bike.new
+      brokenbike.report_broken
+      subject.dock(brokenbike)
+      bike = subject.release_bike
+      expect(bike.broken?).to be_falsey
     end
 
     it "should release the same bike" do
