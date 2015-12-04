@@ -8,7 +8,7 @@ describe 'User Stories' do
   # So that I can use a bike,
   # I'd like a docking station to release a bike.
   it 'so someone can use a bike, docking station releases a bike' do
-    expect(docking_station.release_bike).not_to raise_error
+    expect(docking_station.release_bike).to be_a Bike
   end
 
 
