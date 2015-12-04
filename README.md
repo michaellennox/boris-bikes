@@ -20,10 +20,6 @@ These challenges will help to guide your first few steps when presented with any
 ### User Stories
 
 ```
-As a user,
-So I can find customers,
-I want to search for my customers by their surnames.
-
 As a person,
 So that I can use a bike,
 I'd like a docking station to release a bike.
