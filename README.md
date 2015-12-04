@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/michaellennox/boris-bikes.svg?branch=master)](https://travis-ci.org/michaellennox/boris-bikes)
+
 # Boris Bikes
 
 This is my solo run through of the Boris Bikes challenge which I covered in week 1 of Makers' Academy. [boris-bikes-challenge](https://github.com/makersacademy/course/blob/master/boris_bikes/0_challenge_map.md). This particular solution was started at the end of week 2. You can find all my work during each individual day within the contributors list below. Each branch corresponds to a particular day where I paired with that person.
