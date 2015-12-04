@@ -2,7 +2,9 @@
 
 # Boris Bikes
 
-This is my solo run through of the Boris Bikes challenge which I covered in week 1 of Makers' Academy. [boris-bikes-challenge](https://github.com/makersacademy/course/blob/master/boris_bikes/0_challenge_map.md). This particular solution was started at the end of week 2. You can find all my work during each individual day within the contributors list below. Each branch corresponds to a particular day where I paired with that person.
+This is my solo run through of the Boris Bikes challenge which I covered in week 1 of Makers' Academy. [boris-bikes-challenge](https://github.com/makersacademy/course/blob/master/boris_bikes/0_challenge_map.md). This particular solution was started at the end of week 2. You can find all my work during each individual day within the contributors list below. Each branch corresponds to a particular day where I paired with that person. Please note that all code in this repo should be treated as a WIP and each day has been spent working on a completely separate codebase.
+
+I have aimed to solve this challenge in a test driven manner with automated feature and unit tests using RSpec.
 
 
 ## Brief
