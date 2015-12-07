@@ -23,6 +23,9 @@ describe 'User Stories' do
   # As a member of the public
   # So I can return bikes I've hired
   # I want to dock my bike at the docking station
+  it 'so I can return a bike, I want to dock my bike at the station' do
+    expect(docking_station.dock(bike)).not_to raise_error
+  end
 
 
   # As a member of the public
