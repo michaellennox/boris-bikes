@@ -31,6 +31,9 @@ describe 'User Stories' do
   # As a member of the public
   # So I can decide whether to use the docking station
   # I want to see a bike that has been docked
-
+  it 'so I can return a bike, I want to dock my bike at the station' do
+    docking_station.dock(bike)
+    expect(docking_station.bikes).to include bike
+  end
 
 end
