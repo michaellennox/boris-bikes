@@ -15,6 +15,9 @@ describe 'User Stories' do
   # As a person,
   # So that I can use a good bike,
   # I'd like to see if a bike is working
+  it 'so I can use a good bike, I\'d like to check the bike is working' do
+    expect(docking_station.release_bike).to be_working
+  end
 
 
 end
