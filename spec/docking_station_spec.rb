@@ -2,7 +2,7 @@ require 'docking_station'
 
 describe DockingStation do
 
-  subject(:docking_station) { described_class.new }
+  subject(:docking_station) { described_class.new(bike_klass: bike_klass) }
   subject(:bike_klass) { double(:bike, new: bike) }
   subject(:bike) { double(:bike) }
 

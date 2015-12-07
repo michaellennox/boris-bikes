@@ -9,7 +9,7 @@ class DockingStation
   end
 
   def release_bike
-    
+    bike_klass.new
   end
 
 end
