@@ -1,6 +1,7 @@
 require 'bike'
 
 class DockingStation
+  DEFAULT_CAPACITY = 20
 
   attr_reader :bikes
 
@@ -25,7 +26,7 @@ class DockingStation
   end
 
   def docking_station_full?
-    @bikes.size >= 20
+    @bikes.size >= DEFAULT_CAPACITY
   end
 
 end
