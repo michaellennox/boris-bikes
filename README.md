@@ -42,7 +42,7 @@ I want to see a bike that has been docked
 ## Contributors
 
 * Michael Lennox - [github](https://github.com/michaellennox) michael@michaellennox.me
-* Emma Beynon - [Tuesday](https://github.com/michaellennox/boris-bikes/tree/emma) [github](https://github.com/emmabeynon)
-* Giamir Buoncristiani - [Wednesday](https://github.com/michaellennox/boris-bikes/tree/giamir) [github](https://github.com/giamir)
-* Jamie - [Thursday](https://github.com/michaellennox/boris-bikes/tree/jamie) [github](https://github.com/jamiebrown201)
-* Jonathan - [Friday](https://github.com/michaellennox/boris-bikes/tree/jonathan) [github](https://github.com/jelgar1)
+* [Emma Beynon](https://github.com/emmabeynon) - [Tuesday](https://github.com/michaellennox/boris-bikes/tree/emma)
+* [Giamir Buoncristiani](https://github.com/giamir) - [Wednesday](https://github.com/michaellennox/boris-bikes/tree/giamir)
+* [Jamie Brown](https://github.com/jamiebrown201) - [Thursday](https://github.com/michaellennox/boris-bikes/tree/jamie)
+* [Jonathan Gardiner](https://github.com/jelgar1) - [Friday](https://github.com/michaellennox/boris-bikes/tree/jonathan)
