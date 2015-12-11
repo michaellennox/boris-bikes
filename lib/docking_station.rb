@@ -25,11 +25,11 @@ class DockingStation
   attr_reader :capacity
 
   def no_bikes?
-    @bikes.empty?
+    bikes.empty?
   end
 
   def full?
-    @bikes.size >= capacity
+    bikes.size >= capacity
   end
 
 end

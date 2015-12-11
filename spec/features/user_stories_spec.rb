@@ -65,10 +65,18 @@ describe 'User Stories' do
   # So that busy areas can be served more effectively,
   # I want to be able to specify a larger capacity when necessary.
   let(:larger_station) { DockingStation.new 50 }
-  
+
   it 'I should be able to initialize a docking_station with larger capacity' do
     50.times { larger_station.dock(bike) }
     full = 'Cannot dock, station is full'
     expect{ larger_station.dock(bike) }.to raise_error full
+  end
+
+  # As a member of the public,
+  # So that I reduce the chance of getting a broken bike in future,
+  # I'd like to report a bike as broken when I return it.
+  it 'I should be able to report a bike as broken' do
+    bike.report_broken
+    expect(bike.working?).to be false
   end
 end
