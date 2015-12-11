@@ -9,11 +9,18 @@ class DockingStation
   end
 
   def release_bike
+    fail 'No bikes available' if no_bikes_available?
     bikes.pop
   end
 
   def dock(bike)
     bikes << bike
+  end
+
+  private
+
+  def no_bikes_available?
+    @bikes.empty?
   end
 
 end
