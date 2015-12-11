@@ -28,7 +28,8 @@ describe DockingStation do
 
     it 'should raise error if trying to dock when station is full' do
       20.times {docking_station.dock(bike)}
-      expect{docking_station.dock(bike)}.to raise_error 'Cannot dock, station is full'
+      full = 'Cannot dock, station is full'
+      expect{docking_station.dock(bike)}.to raise_error full
     end
   end
 

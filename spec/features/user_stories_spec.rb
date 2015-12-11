@@ -48,9 +48,13 @@ describe 'User Stories' do
   # As a maintainer of the system,
   # So that I can control the distribution of bikes,
   # I'd like docking stations not to accept more bikes than their capacity.
-  it 'a docking station should not accept more bikes than capacity' do
-    20.times { docking_station.dock(Bike.new) }
-    expect{docking_station.dock(bike)}.to raise_error 'Cannot dock, station is full'
-  end
 
+  # As a system maintainer,
+  # So that I can plan the distribution of bikes,
+  # I want a docking station to have a default capacity of 20 bikes.
+  it 'a docking station should have a default capacity of 20 bikes' do
+    DockingStation::DEFAULT_CAPACITY.times {docking_station.dock(Bike.new)}
+    full = 'Cannot dock, station is full'
+    expect{docking_station.dock(bike)}.to raise_error full
+  end
 end
