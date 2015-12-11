@@ -3,10 +3,16 @@ require 'docking_station'
 describe DockingStation do
 
   subject(:docking_station) { described_class.new }
-  subject(:bike) { double(:bike) }
+  subject(:larger_station) { described_class.new 50 }
+  let(:bike) { double(:bike) }
 
   it 'should initialize empty' do
     expect(docking_station.bikes).to be_empty
+  end
+
+  it 'should be possible to increase maximum capacity on initialization' do
+    50.times { larger_station.dock(bike) }
+    expect(larger_station.bikes.size).to eq 50
   end
 
   describe '#release_bike' do
