@@ -70,7 +70,7 @@ I'd like docking stations to accept returning bikes (broken or not).
 
 ##Contributors
 
-* Michael Lennox - [github](https://github.com/michaellennox) michael@michaellennox.me
+* [Michael Lennox](https://github.com/michaellennox) - michael@michaellennox.me
 * [Emma Beynon](https://github.com/emmabeynon) - [Tuesday](https://github.com/michaellennox/boris-bikes/tree/emma)
 * [Giamir Buoncristiani](https://github.com/giamir) - [Wednesday](https://github.com/michaellennox/boris-bikes/tree/giamir)
 * [Jamie Brown](https://github.com/jamiebrown201) - [Thursday](https://github.com/michaellennox/boris-bikes/tree/jamie)

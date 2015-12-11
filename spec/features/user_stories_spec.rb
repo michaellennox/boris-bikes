@@ -2,6 +2,8 @@ describe 'User Stories' do
 
   let(:docking_station) { DockingStation.new }
   let(:bike) { Bike.new }
+  let(:van) { Van.new }
+  let(:garage) { Garage.new }
 
   context 'after a bike is docked' do
     before(:example) do
@@ -96,5 +98,17 @@ describe 'User Stories' do
   it 'a docking station should accept broken bikes' do
     bike.report_broken
     expect{ docking_station.dock(bike) }.not_to raise_error
+  end
+
+  # As a maintainer of the system,
+  # So that I can manage broken bikes and not disappoint users,
+  # I'd like vans to take broken bikes from docking stations
+  # and deliver them to garages to be fixed.
+  it 'a van should take broken bikes and deliver them to a garage' do
+    bike.report_broken
+    docking_station.dock(bike)
+    van.take_broken(docking_station)
+    van.deliver_bikes(garage)
+    expect(garage.bikes).to include bike
   end
 end
