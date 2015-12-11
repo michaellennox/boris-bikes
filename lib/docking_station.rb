@@ -14,6 +14,7 @@ class DockingStation
   end
 
   def dock(bike)
+    fail 'Cannot dock, station is full' if docking_station_full?
     bikes << bike
   end
 
@@ -21,6 +22,10 @@ class DockingStation
 
   def no_bikes_available?
     @bikes.empty?
+  end
+
+  def docking_station_full?
+    @bikes.size >= 20
   end
 
 end
