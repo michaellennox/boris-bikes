@@ -86,6 +86,7 @@ describe 'User Stories' do
   it 'a broken bike should not be released from a docking station' do
     bike.report_broken
     docking_station.dock(bike)
-    expect{ docking_station.release_bike }.to raise_error 'No bikes available'
+    no_bikes = 'No working bikes available'
+    expect{ docking_station.release_bike }.to raise_error no_bikes
   end
 end

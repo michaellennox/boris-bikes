@@ -4,7 +4,7 @@ describe DockingStation do
 
   subject(:docking_station) { described_class.new }
   subject(:larger_station) { described_class.new 50 }
-  let(:bike) { double(:bike) }
+  let(:bike) { double(:bike, working?: true) }
 
   it 'should initialize empty' do
     expect(docking_station.bikes).to be_empty
@@ -23,6 +23,13 @@ describe DockingStation do
 
     it 'should raise an error if no bike is available' do
       expect{docking_station.release_bike}.to raise_error 'No bikes available'
+    end
+
+    it 'should raise an error if no working bikes are available' do
+      allow(bike).to receive(:working?).and_return(false)
+      docking_station.dock(bike)
+      no_bikes = 'No working bikes available'
+      expect{docking_station.release_bike}.to raise_error no_bikes
     end
   end
 
