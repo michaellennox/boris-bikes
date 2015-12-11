@@ -27,7 +27,7 @@ describe 'User Stories' do
   # So I can return bikes I've hired
   # I want to dock my bike at the docking station
   it 'so I can return a bike, I want to dock my bike at the station' do
-    expect{docking_station.dock(bike)}.not_to raise_error
+    expect{ docking_station.dock(bike) }.not_to raise_error
   end
 
   # As a member of the public
@@ -49,9 +49,9 @@ describe 'User Stories' do
   # So that I can control the distribution of bikes,
   # I'd like docking stations not to accept more bikes than their capacity.
   it 'should raise an error when trying to dock more bikes than capacity' do
-    20.times {docking_station.dock(Bike.new)}
+    20.times { docking_station.dock(Bike.new) }
     full = 'Cannot dock, station is full'
-    expect{docking_station.dock(bike)}.to raise_error full
+    expect{ docking_station.dock(bike) }.to raise_error full
   end
 
   # As a system maintainer,
@@ -59,5 +59,16 @@ describe 'User Stories' do
   # I want a docking station to have a default capacity of 20 bikes.
   it 'a docking station should have a default capacity of 20 bikes' do
     expect(DockingStation::DEFAULT_CAPACITY).to eq 20
+  end
+
+  # As a system maintainer,
+  # So that busy areas can be served more effectively,
+  # I want to be able to specify a larger capacity when necessary.
+  let(:larger_station) { DockingStation.new 50 }
+  
+  it 'I should be able to initialize a docking_station with larger capacity' do
+    50.times { larger_station.dock(bike) }
+    full = 'Cannot dock, station is full'
+    expect{ larger_station.dock(bike) }.to raise_error full
   end
 end
