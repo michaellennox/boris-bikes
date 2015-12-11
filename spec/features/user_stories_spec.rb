@@ -38,4 +38,11 @@ describe 'User Stories' do
     expect(docking_station.bikes).to include bike
   end
 
+  # As a member of the public,
+  # So that I am not confused and charged unnecessarily,
+  # I'd like docking stations not to release bikes when there are none available
+  it 'an empty docking station should not release a bike' do
+    expect{docking_station.release_bike}.to raise_error 'No bikes available'
+  end
+
 end
