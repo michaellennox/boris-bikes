@@ -1,7 +1,6 @@
 require 'docking_station'
 
 describe DockingStation do
-
   subject(:docking_station) { described_class.new }
   subject(:larger_station) { described_class.new 50 }
   let(:bike) { double(:bike, working?: true) }
