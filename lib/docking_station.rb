@@ -18,7 +18,7 @@ class DockingStation
 
   def dock(bike)
     fail 'Cannot dock, station is full' if full?
-    bikes << bike
+    bike.working? ? bikes << bike : bikes.unshift(bike)
   end
 
   private
