@@ -107,8 +107,19 @@ describe 'User Stories' do
   it 'a van should take broken bikes and deliver them to a garage' do
     bike.report_broken
     docking_station.dock(bike)
-    van.take_broken(docking_station)
-    van.deliver_bikes(garage)
+    station_to_van_bike = docking_station.release_broken_bike
+    van.store_bike(station_to_van_bike)
+    van_to_garage_bike = van.release_broken_bike
+    garage.store_bike(van_to_garage_bike)
     expect(garage.bikes).to include bike
+  end
+
+  it 'a van should take working bikes from the garage to the docking station' do
+    garage.store_bike(bike)
+    garage_to_van_bike = garage.release_working_bike
+    van.store_bike(garage_to_van_bike)
+    van_to_station_bike = van.release_working_bike
+    station.dock(van_to_station_bike)
+    expect(station.bikes).to include bike
   end
 end
