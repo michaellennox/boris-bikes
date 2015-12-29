@@ -2,13 +2,43 @@
 
 #Boris Bikes
 
-This is my solo run through of the Boris Bikes challenge which I covered in week 1 of Makers' Academy. [boris-bikes-challenge](https://github.com/makersacademy/course/blob/master/boris_bikes/0_challenge_map.md). This particular solution was started at the end of week 2. You can find all my work during each individual day within the contributors list below. Each branch corresponds to a particular day where I paired with that person. Please note that all code in this repo should be treated as a WIP and each day has been spent working on a completely separate codebase.
+This is my solo run through of the Boris Bikes challenge which we covered in week 1 of Makers' Academy, [boris-bikes-challenge](https://github.com/makersacademy/course/blob/master/boris_bikes/0_challenge_map.md). Within the branches you can find a separate code base for each day spent pairing with another student at Makers.
+
+I have also completed this challenge in Python, the repo for which can be found [here](https://github.com/michaellennox/boris-bikes-python).
 
 I have aimed to solve this challenge in a test driven manner with automated feature and unit tests using RSpec.
 
 ##Installation Instructions
 
-##Useage Instructions
+Clone the repository from github then change directory into it.
+
+```
+$ git clone git@github.com:michaellennox/boris-bikes.git
+$ cd boris-bikes
+```
+
+Load dependencies with bundle.
+
+```
+$ gem install bundle
+$ bundle
+```
+
+Load the app in irb.
+
+```
+$ irb
+2.2.3 :001 > load './lib/bike.rb'
+ => true
+2.2.3 :002 > load './lib/docking_station.rb'
+ => true
+2.2.3 :003 > load './lib/garage.rb'
+ => true
+2.2.3 :004 > load './lib/van.rb'
+ => true
+```
+
+##Usage Instructions
 
 ##Brief
 
@@ -74,7 +104,7 @@ I'd like vans to take broken bikes from docking stations and deliver them to gar
 
 ##Contributors
 
-* [Michael Lennox](https://github.com/michaellennox) - michael@michaellennox.me
+* [Michael Lennox](https://github.com/michaellennox) - [solo](https://github.com/michaellennox/boris-bikes)
 * [Emma Beynon](https://github.com/emmabeynon) - [Tuesday](https://github.com/michaellennox/boris-bikes/tree/emma)
 * [Giamir Buoncristiani](https://github.com/giamir) - [Wednesday](https://github.com/michaellennox/boris-bikes/tree/giamir)
 * [Jamie Brown](https://github.com/jamiebrown201) - [Thursday](https://github.com/michaellennox/boris-bikes/tree/jamie)
