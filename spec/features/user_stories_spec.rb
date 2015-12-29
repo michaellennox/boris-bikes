@@ -14,14 +14,14 @@ describe 'User Stories' do
     # So that I can use a bike,
     # I'd like a docking station to release a bike.
     it 'so someone can use a bike, docking station releases a bike' do
-      expect(docking_station.release_bike).to be_a Bike
+      expect(docking_station.release_working_bike).to be_a Bike
     end
 
     # As a person,
     # So that I can use a good bike,
     # I'd like to see if a bike is working
     it 'so I can use a good bike, I\'d like to check the bike is working' do
-      expect(docking_station.release_bike).to be_working
+      expect(docking_station.release_working_bike).to be_working
     end
   end
 
@@ -44,7 +44,7 @@ describe 'User Stories' do
   # So that I am not confused and charged unnecessarily,
   # I'd like docking stations not to release bikes when there are none available
   it 'an empty docking station should not release a bike' do
-    expect{docking_station.release_bike}.to raise_error 'No bikes available'
+    expect{docking_station.release_working_bike}.to raise_error 'No bikes available'
   end
 
   # As a maintainer of the system,
@@ -52,7 +52,7 @@ describe 'User Stories' do
   # I'd like docking stations not to accept more bikes than their capacity.
   it 'should raise an error when trying to dock more bikes than capacity' do
     20.times { docking_station.dock(Bike.new) }
-    full = 'Cannot dock, station is full'
+    full = 'Cannot add bike, DockingStation is full'
     expect{ docking_station.dock(bike) }.to raise_error full
   end
 
@@ -66,11 +66,11 @@ describe 'User Stories' do
   # As a system maintainer,
   # So that busy areas can be served more effectively,
   # I want to be able to specify a larger capacity when necessary.
-  let(:larger_station) { DockingStation.new 50 }
 
-  it 'I should be able to initialize a docking_station with larger capacity' do
+  xit 'I should be able to initialize a docking_station with larger capacity' do
+    larger_station = DockingStation.new 50
     50.times { larger_station.dock(bike) }
-    full = 'Cannot dock, station is full'
+    full = 'Cannot add bike, DockingStation is full'
     expect{ larger_station.dock(bike) }.to raise_error full
   end
 
@@ -89,7 +89,7 @@ describe 'User Stories' do
     bike.report_broken
     docking_station.dock(bike)
     no_bikes = 'No working bikes available'
-    expect{ docking_station.release_bike }.to raise_error no_bikes
+    expect{ docking_station.release_working_bike }.to raise_error no_bikes
   end
 
   # As a maintainer of the system,
@@ -108,8 +108,8 @@ describe 'User Stories' do
     bike.report_broken
     docking_station.dock(bike)
     station_to_van_bike = docking_station.release_broken_bike
-    van.store_bike(station_to_van_bike)
-    van_to_garage_bike = van.release_broken_bike
+    van.load_bike(station_to_van_bike)
+    van_to_garage_bike = van.unload_broken_bike
     garage.store_bike(van_to_garage_bike)
     expect(garage.bikes).to include bike
   end
@@ -117,9 +117,9 @@ describe 'User Stories' do
   it 'a van should take working bikes from the garage to the docking station' do
     garage.store_bike(bike)
     garage_to_van_bike = garage.release_working_bike
-    van.store_bike(garage_to_van_bike)
-    van_to_station_bike = van.release_working_bike
-    station.dock(van_to_station_bike)
-    expect(station.bikes).to include bike
+    van.load_bike(garage_to_van_bike)
+    van_to_station_bike = van.unload_working_bike
+    docking_station.dock(van_to_station_bike)
+    expect(docking_station.bikes).to include bike
   end
 end

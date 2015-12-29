@@ -1,9 +1,7 @@
+require_relative 'bike_container'
+
 class Garage
+  include BikeContainer
 
-  attr_reader :bikes
-
-  def initialize
-    @bikes = []
-  end
-
+  alias_method :store_bike, :add_bike
 end
