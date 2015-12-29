@@ -16,4 +16,12 @@ describe Bike do
     end
   end
 
+  describe '#fix' do
+    it 'is expected to change the status of working? to true' do
+      bike.report_broken
+      bike.fix
+      expect(bike.working?).to be true
+    end
+  end
+
 end
