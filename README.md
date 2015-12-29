@@ -40,6 +40,60 @@ $ irb
 
 ##Usage Instructions
 
+As a member of the public you can dock and remove bikes from the docking station. You can also report your bike as broken if it breaks.
+
+```ruby
+2.2.3 :005 > station = DockingStation.new
+2.2.3 :006 > bike = Bike.new
+
+# To report your bike as broken use .report_broken
+2.2.3 :007 > bike.report_broken
+2.2.3 :008 > bike.working?
+ => false
+
+# To dock at station, use .dock on the station and pass the bike as an argument,
+# you can then see bikes inside the station with .bikes
+# This will fail if the docking station is full
+2.2.3 :007 > station.dock(bike)
+2.2.3 :008 > station.bikes
+ => [#<Bike:0x007fdb4d9b5250 @working=true>]
+
+# To remove a working bike from the station use .release_working_bike
+# This will fail if there are no working bikes present at your docking station
+2.2.3 :008 > station.release_working_bike
+ => #<Bike:0x007fdb4d98d138 @working=true>
+```
+
+As a system maintainer you can transport broken bikes from stations to garages to repair them. You can then repair them at the garage and transport them back to docking stations.
+
+```ruby
+2.2.3 :005 > station = DockingStation.new
+2.2.3 :006 > bike = Bike.new
+2.2.3 :007 > van = Van.new
+2.2.3 :008 > garage = Garage.new
+
+# You can move broken bikes to the garage for repairs with the following set of commands
+2.2.3 :009 > transport_bike = station.release_broken_bike
+2.2.3 :010 > van.load_bike(transport_bike)
+2.2.3 :011 > transport_bike = van.unload_broken_bike
+2.2.3 :012 > garage.store_bike(transport_bike)
+2.2.3 :013 > garage.bikes
+ => [#<Bike:0x007fdb4d9b5250 @working=false>]
+
+# You can repair bikes at the garage with .fix_bike, passing the bike as an argument
+2.2.3 :014 > garage.fix_bike(transport_bike)
+2.2.3 :015 > transport_bike.working?
+ => true
+
+# You can move broken bikes from the garage back to a station as follows
+2.2.3 :016 > transport_bike = garage.release_working_bike
+2.2.3 :017 > van.load_bike(transport_bike)
+2.2.3 :018 > transport_bike = van.unload_working_bike
+2.2.3 :019 > station.dock(transport_bike)
+2.2.3 :020 > station.bikes
+ => [#<Bike:0x007fdb4d9b5250 @working=true>]
+```
+
 ##Brief
 
 London's Boris Bikes (well, 'Santander Cycles') are awesome. For a small fee, anyone can hire out a bike and ride it around London. Bikes are located at Docking Stations dotted throughout the city.
